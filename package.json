@@ -1,4 +1,11 @@
 {
+  "name": "hand-tracking-games",
+  "version": "1.0.0",
+  "description": "Browser-based hand tracking mini-games using MediaPipe Hands and HTML5 canvas.",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "echo \"No tests configured.\" && exit 0"
+  },
   "dependencies": {
     "socket.io-client": "^4.8.1"
   },

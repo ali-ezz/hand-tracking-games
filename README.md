@@ -1,82 +1,70 @@
-# Camera Hand‑Tracking Games 📷
+# Hand Tracking Games
 
-A tiny, polished suite of hand‑tracking mini‑games that run in the browser using MediaPipe Hands and an HTML5 canvas. Use your webcam and your index finger to play fast, fun demos — slice fruits, trace shapes, paint in the air, navigate mazes, and more.
+Browser-based hand-tracking mini-games built with MediaPipe Hands, vanilla JavaScript, and HTML5 canvas.
 
----
+[![License](https://img.shields.io/github/license/ali-ezz/hand-tracking-games)](LICENSE) [![Top language](https://img.shields.io/github/languages/top/ali-ezz/hand-tracking-games)](https://github.com/ali-ezz/hand-tracking-games) [![Issues](https://img.shields.io/github/issues/ali-ezz/hand-tracking-games)](https://github.com/ali-ezz/hand-tracking-games/issues)
 
-## 🎯 Highlights
-- ✅ Browser-based hand tracking (MediaPipe Hands via CDN)  
-- 🎮 Multiple modes: Ninja Fruit, Maze (mini), Paint Air, Runner (flappy-like), Shape Trace  
-- 🏆 Per-game persistent leaderboards (localStorage), deduped by name (best score kept)  
-- ⚙️ Tiny, dependency‑free front end (vanilla JS) — easy to customize  
-- 🔊 Optional per‑game audio & sprites via `assets/` folder  
-- ⚡ Performance tuned: particle/pop limits, spawn throttles, canvas DPR scaling
+## Overview
 
----
+This project delivers browser games controlled by hand movement using the webcam and MediaPipe Hands. It is designed for local demo use, rapid customization, and browser-based interaction without a build step.
 
-## 🚀 Quick start (local)
-1. Clone or copy project to your machine.
-2. From the project folder run a static server:
-   - Python 3: `python3 -m http.server 8000`
-3. Open your browser at: `http://localhost:8000`
-4. Allow camera access, enter your player name, pick a game, and Play.
+## Quick start
 
-Tip: MediaPipe is loaded from CDN, so an internet connection is required.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ali-ezz/hand-tracking-games.git
+   cd hand-tracking-games
+   ```
+2. Start a local server from the project root:
+   ```bash
+   python3 -m http.server 8000
+   ```
+3. Open the browser at:
+   ```text
+   http://localhost:8000
+   ```
+4. Allow camera access, enter a player name, choose a game, and play.
 
----
+## Features
 
-## 🎮 How to play (controls)
-- Ninja Fruit — slice fruits with your index finger; avoid bombs.  
-- Maze (mini) — guide the avatar with your fingertip to highlighted exits.  
-- Paint Air — draw in mid-air; use color, size, and eraser toolbar controls.  
-- Runner Control — guide the avatar vertically with your index finger.  
-- Shape Trace — trace the outline; fill coverage to score.
+- Hand-tracking input powered by MediaPipe Hands via CDN
+- Multiple mini-games: fruit slicing, maze navigation, air painting, runner control, and shape tracing
+- Persistent local leaderboard per game using `localStorage`
+- Responsive canvas rendering with device pixel ratio scaling
+- Minimal dependency footprint for easy local hosting and customization
 
-UI:
-- Enter name in the menu to save scores to the per‑game leaderboard.  
-- Each game's leaderboard is independent; if a game has no entries it shows "No leaders yet" for that game.
+## Usage examples
 
----
+- Play the Ninja Fruit game by moving your index finger to slice fruits and avoid bombs.
+- Use the Maze mode to guide the player through a small maze with your fingertip.
+- Create drawings in Paint Air with real-time hand motion and color controls.
+- Control vertical movement in Runner mode using hand position.
+- Trace shapes and fill coverage to score in Shape Trace.
 
-## 🧭 Developer notes
-Main files:
-- `index.html` — UI, menu, leaderboard modal, and styles  
-- `js/game.js` — core game logic: MediaPipe integration, game modes, scoring, localStorage leaders
+## Project layout
 
-Leaderboards:
-- Stored under `hand-ninja-leaders-v1:<gameId>` in `localStorage`.  
-- Entries are deduped by normalized name (keeps the highest score).
+- `index.html` — entry page, UI, menus, and leaderboard modal
+- `js/game.js` — core engine, MediaPipe integration, game modes, scoring, and localStorage
+- `js/ui.js` — UI behavior and menu interactions
+- `js/net.js` — network/leaderboard helpers (if used)
+- `assets/` — optional audio, sprites, and game assets
+- `server/` — backend metadata or leaderboard storage utilities
+- `LICENSE` — repository license
+- `CONTRIBUTING.md` — contribution guidelines
+- `CODE_OF_CONDUCT.md` — community standards
+- `SECURITY.md` — vulnerability reporting guidance
+- `.github/ISSUE_TEMPLATE/` — issue intake templates
+- `.github/PULL_REQUEST_TEMPLATE.md` — PR guidance
+- `CODEOWNERS` — maintainers and review owners
 
-Canvas:
-- Uses devicePixelRatio scaling and ResizeObserver for crisp rendering.
+## Development
 
-Assets:
-- Optional assets can be placed in `assets/` or `assets/<gameId>/`.  
-- Example: `assets/ninga-game-sounds/slice-frute.mp3` or `assets/ninja-fruit/bgm.mp3`.
+If you want to customize or add a new game mode, start by modifying `js/game.js` and adding new mode logic around the existing hand-tracking result handlers.
 
-Tuneable constants:
-- Open `js/game.js` top section to adjust GRAVITY, spawn intervals, max objects, hit padding, etc.
+## Contribution
 
----
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening issues or pull requests.
 
-## ✨ Visual polish for README (now)
-- Emojis used for section anchors and quick scanning.  
-- Short, scannable sections and tips for local testing.  
-- Clear developer pointers for customizing gameplay and assets.
+## License
 
----
-
-## 🛠️ Contributing & customization
-- Add fruit sprites by adding image URLs to `ASSETS.fruitSprites` in `js/game.js` or drop images into `assets/`.  
-- Fine‑tune spawn/physics constants in `js/game.js` (top).  
-- To add a new game mode, see existing mode handlers in `onResults()` and reuse popup/particle helpers.
-
----
-
-## 📸 Preview & test
-- Run `python3 -m http.server 8000` → open `http://localhost:8000` → Play and verify leaderboard under Menu → Leaderboard.
-
----
-
-## 📝 License
-MIT-style — free to reuse and adapt for demos and teaching. Keep attribution when redistributing.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
